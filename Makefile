@@ -21,16 +21,16 @@
 CXX = g++
 
 # C pre-processor flags
-CPPFLAGS = -I/home/013/b/bj/bjr170630/UNIX/HW2/HW2-TCLAP/tclap-1.2.1/include -I/home/013/b/bj/bjr170630/UNIX/HW5/RC/include 
+CPPFLAGS = -I/scratch/perkins/include  
 
 # compiler flags
-CXXFLAGS = -Werror
+CXXFLAGS = -Werror -Wno-write-strings
 
 # linker flags
-LDFLAGS = -L /home/013/b/bj/bjr170630/UNIX/HW5/RC/lib
+LDFLAGS = -L/scratch/perkins/lib
 
 #Library Flags
-LDLIBS = -l rudeconfig -static
+LDLIBS = -lcdk -lcurses
 
 # Project name.  This is used in building the file name for the backup target
 PROJECTNAME = HW6Backup
@@ -54,9 +54,11 @@ OBJS = $(SRCS:cc=o)
 .PHONY: all clean
 
 all: $(EXEC)
+#	cp /scratch/perkins/cs3377.bin cs3377.bin
+
 clean:
 	rm -f $(OBJS) *.d *~ $(EXEC)
-#	rm cs3376dirmond.pid
+#	rm cs3377.bin
 
 # Pattern for .d files.
 %.d:%.cc
